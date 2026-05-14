@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day0｜系统学习投资</title>
+  <style>
+    :root {
+      --accent: #ff6a00;
+      --accent-soft: #fff1e5;
+      --bg: #f7f4ef;
+      --card: #ffffff;
+      --text: #242424;
+      --muted: #7a7a7a;
+      --border: rgba(0, 0, 0, 0.06);
+      --shadow: 0 18px 48px rgba(44, 28, 13, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      line-height: 1.95;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255, 106, 0, 0.13), transparent 28%),
+        linear-gradient(180deg, #fff8f1 0%, var(--bg) 42%, var(--bg) 100%);
+    }
+
+    .page {
+      width: min(920px, calc(100% - 44px));
+      margin: 0 auto;
+      padding: 52px 0 96px;
+    }
+
+    .hero, section, .image-wrap {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 38px 42px;
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 15px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+    section {
+      margin-top: 28px;
+      padding: 32px 38px;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2::before {
+      content: "";
+      width: 5px;
+      height: 25px;
+      border-radius: 999px;
+      background: var(--accent);
+      flex: 0 0 auto;
+    }
+
+    p { margin: 0 0 14px; }
+    p:last-child { margin-bottom: 0; }
+
+    .image-wrap {
+      margin-top: 28px;
+      padding: 16px;
+      overflow: hidden;
+    }
+
+    .image-wrap img {
+      display: block;
+      width: 100%;
+      border-radius: 20px;
+      background: #f4f4f4;
+    }
+
+    .image-placeholder {
+      padding: 70px 20px;
+      text-align: center;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #fff2e6, #fff9f3);
+      color: #b85b0a;
+      font-weight: 700;
+    }
+
+    .path-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .path-item {
+      padding: 17px 19px;
+      border-radius: 18px;
+      background: #fafafa;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .toc {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 176px;
+      max-height: 68vh;
+      overflow-y: auto;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.10);
+      backdrop-filter: blur(12px);
+    }
+
+    .toc-title {
+      margin-bottom: 10px;
+      font-weight: 850;
+      color: #303030;
+    }
+
+    .toc a {
+      display: block;
+      padding: 9px 10px;
+      margin-bottom: 6px;
+      border-radius: 12px;
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .toc a:hover {
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    @media (max-width: 1180px) {
+      .toc { display: none; }
+    }
+
+    @media (max-width: 720px) {
+      .page { width: min(100% - 28px, 920px); padding: 28px 0 64px; }
+      .hero, section { padding: 24px; border-radius: 22px; }
+      .image-wrap { padding: 10px; border-radius: 22px; }
+      .image-wrap img, .image-placeholder { border-radius: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="toc" aria-label="页面目录">
+    <div class="toc-title">目录</div>
+    <a href="#day0">Day0</a>
+    <a href="#background">Background</a>
+    <a href="#image">图片</a>
+    <a href="#path">学习路径</a>
+  </nav>
+
+  <main class="page">
+    <header class="hero" id="day0">
+      <span class="label">Day0.</span>      <p>打算从今天开始系统学习投资，思考和学习记录都会在这个平台发表，主要目的是长期记录，当然能遇到志同道合的朋友一起交流也是一大幸事。</p>
+    </header>
+
+    <section id="background">
+      <h2>Background</h2>
+      <p>先交代一下background，25年1月家里给了50万本金，经过几次本金追加与无规则进场，截止今日总资金73.8万，后续会开始系统性的学习，技术分析，复盘。</p>
+    </section>
+
+    <figure class="image-wrap" id="image">
+      <img src="assets/day0-portfolio.png" alt="Day0 资产截图" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<div class=&quot;image-placeholder&quot;>将图片放在 assets/day0-portfolio.png</div>');" />
+    </figure>
+
+    <section id="path">
+      <h2>学习路径</h2>
+      <p>再整理一下学习路径，目前拆分为三个板块：</p>
+      <div class="path-list">
+        <div class="path-item">第一，技术面分析技巧，从明天开始学习整理</div>
+        <div class="path-item">第二，仓位管理，交易体系的建立，明天先整理出一个初步的框架，在实战中进一步完善</div>
+        <div class="path-item">第三，基本面分析，行业分析，公司财报分析的能力。逐步培养，会从明天开始开始行业调研。</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
