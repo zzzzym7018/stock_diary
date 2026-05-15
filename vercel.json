@@ -1,0 +1,23 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/yyy_stock_diary/",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/yyy_stock_diary",
+      "destination": "/homepage.html"
+    },
+    {
+      "source": "/yyy_stock_diary/",
+      "destination": "/homepage.html"
+    },
+    {
+      "source": "/yyy_stock_diary/:path*",
+      "destination": "/:path*"
+    }
+  ]
+}

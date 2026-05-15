@@ -1,14 +1,270 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>投资学习记录</title>
+  <style>
+    :root {
+      --accent: #ff6a00;
+      --accent-soft: #fff1e5;
+      --bg: #f7f4ef;
+      --text: #242424;
+      --muted: #7a7a7a;
+      --border: rgba(0, 0, 0, 0.06);
+      --shadow: 0 18px 48px rgba(44, 28, 13, 0.08);
+      --shadow-hover: 0 22px 56px rgba(44, 28, 13, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255, 106, 0, 0.13), transparent 28%),
+        radial-gradient(circle at 88% 18%, rgba(255, 140, 60, 0.08), transparent 32%),
+        linear-gradient(180deg, #fff8f1 0%, var(--bg) 42%, var(--bg) 100%);
+    }
+
+    .page {
+      width: min(720px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 80px;
+    }
+
+    .hero {
+      padding: 36px 38px 34px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), #ffb347);
+      opacity: 0.95;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .badge code {
+      font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      margin: 18px 0 10px;
+      font-size: clamp(26px, 5vw, 34px);
+      font-weight: 850;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+
+    .lede {
+      margin: 0;
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 38em;
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: 28px 28px 26px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .section-head::before {
+      content: "";
+      width: 5px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--accent);
+      flex: 0 0 auto;
+    }
+
+    .day-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .day-list a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      color: inherit;
+      background: #fafafa;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .day-list a:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(255, 106, 0, 0.22);
+      background: #fff;
+    }
+
+    .day-list a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .day-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .day-tag {
+      flex: 0 0 auto;
+      min-width: 52px;
+      text-align: center;
+      padding: 6px 10px;
+      border-radius: 14px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .day-title {
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .day-sub {
+      margin-top: 4px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .arrow {
+      flex: 0 0 auto;
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      background: rgba(255, 106, 0, 0.08);
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .day-list a:hover .arrow {
+      background: var(--accent-soft);
+    }
+
+    footer {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    @media (min-width: 521px) {
+      .day-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page { padding: 28px 0 56px; }
+      .hero { padding: 28px 22px 26px; border-radius: 22px; }
+      .section { padding: 22px 18px 20px; border-radius: 22px; }
+      .day-list a { padding: 16px 16px; gap: 12px; }
+      .arrow { width: 32px; height: 32px; font-size: 16px; }
+    }
+  </style>
 </head>
 <body>
-  <h1>投资学习记录</h1>
-  <ul>
-    <li><a href="/day0/">Day0｜开始系统学习投资</a></li>
-    <li><a href="/day1/">Day1｜技术分析学习</a></li>
-  </ul>
+  <main class="page">
+    <header class="hero">
+      <span class="badge">入口 <code>/yyy_stock_diary/</code></span>
+      <h1>投资学习记录</h1>
+      <p class="lede">按天整理的笔记与复盘，从下面选择一天进入阅读。</p>
+    </header>
+
+    <section class="section" aria-labelledby="catalog-heading">
+      <h2 class="section-head" id="catalog-heading">日记目录</h2>
+      <ul class="day-list">
+        <li>
+          <a href="day_0/">
+            <div class="day-meta">
+              <span class="day-tag">Day 0</span>
+              <div>
+                <div class="day-title">开始系统学习投资</div>
+                <div class="day-sub">背景、路径与资产记录起点</div>
+              </div>
+            </div>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="day_1/">
+            <div class="day-meta">
+              <span class="day-tag">Day 1</span>
+              <div>
+                <div class="day-title">技术分析学习</div>
+                <div class="day-sub">占位链接，有内容后替换摘要</div>
+              </div>
+            </div>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <footer>记录持续更新</footer>
+  </main>
 </body>
 </html>
