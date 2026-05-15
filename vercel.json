@@ -16,8 +16,8 @@
       "destination": "/homepage.html"
     },
     {
-      "source": "/yyy_stock_diary/:path*",
-      "destination": "/:path*"
+      "source": "/yyy_stock_diary/(.*)",
+      "destination": "/$1"
     }
   ]
 }
